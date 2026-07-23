@@ -7,21 +7,16 @@
     <!-- Fuentes desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Paleta inspirada exactamente en el cartel */
-            --teal-main: #249EA0;
-            --magenta-wine: #8C134E;
-            --wine-dark: #640A36;
-            --text-dark: #1A2B32;
-            --text-muted: #4A5D65;
+            --primary-neon-pink: #FF10F0;
+            --accent-pink-light: #FFD1F8;
             --white: #FFFFFF;
-            /* Tarjetas blancas de cristal brillante para alta legibilidad */
-            --card-glass: rgba(255, 255, 255, 0.88);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --card-shadow: rgba(14, 52, 62, 0.15);
+            /* Cristal grisáceo/oscuro translúcido para hacer resaltar el texto blanco */
+            --card-glass: rgba(15, 35, 45, 0.45);
+            --card-border: rgba(255, 255, 255, 0.22);
         }
 
         * {
@@ -31,48 +26,45 @@
         }
 
         /* ----------------------------------------------------------- */
-        /* FONDO DINÁMICO ELEGANTE: TURQUESA, AZUL Y LUZ BLANCA */
+        /* FONDO DE GRADIENTE ANIMADO Y FLUIDO */
         /* ----------------------------------------------------------- */
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
+            color: var(--white);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 30px 15px;
+            padding: 25px 15px;
             overflow-x: hidden;
             position: relative;
 
-            /* Gradiente fluido de tonos turquesa con luz blanca suave */
-            background: linear-gradient(135deg, #1D8A95 0%, #29B3C1 25%, #EBF8F9 50%, #1A7983 75%, #249EA0 100%);
-            background-size: 350% 350%;
-            animation: elegantFluid 16s ease infinite;
+            /* Definición del gradiente animado */
+            background: linear-gradient(135deg, #1FA5B2 0%, #157A83 25%, #FF10F010 50%, #1FA5B2 75%, #157A83 100%);
+            background-size: 400% 400%; /* Tamaño grande para el movimiento */
+            animation: fluidGradient 15s ease infinite; /* Animación continua */
         }
 
-        @keyframes elegantFluid {
+        /* Definición de la animación del gradiente */
+        @keyframes fluidGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        /* ----------------------------------------------------------- */
 
-        /* Destello suave que imita iluminación escénica */
+        /* Capa superpuesta para asegurar legibilidad del texto */
         body::before {
             content: '';
             position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.1); /* Ligero oscurecimiento opcional */
             z-index: 0;
-            pointer-events: none;
         }
 
         .container {
             max-width: 520px;
             width: 100%;
-            z-index: 1;
+            z-index: 1; /* Asegura que el contenido esté sobre el fondo animado */
             position: relative;
         }
 
@@ -87,34 +79,32 @@
             font-size: 0.85rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 8px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            font-weight: 600;
+            color: var(--accent-pink-light);
+            margin-bottom: 6px;
         }
 
         h1.main-title {
-            font-size: 2.4rem;
+            font-size: 2.3rem;
             font-weight: 900;
-            color: var(--magenta-wine);
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
-            line-height: 1.1;
-            margin-bottom: 16px;
+            color: var(--white);
+            text-shadow: 0 0 15px rgba(255, 16, 240, 0.7);
+            line-height: 1.15;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
         }
 
         .event-badge {
-            background-color: var(--magenta-wine);
+            background: linear-gradient(135deg, #FF10F0, #D100C4);
             color: var(--white);
             display: inline-block;
-            padding: 8px 24px;
+            padding: 8px 22px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 0.85rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(140, 19, 78, 0.25);
+            box-shadow: 0 4px 15px rgba(255, 16, 240, 0.5);
         }
 
         /* DATOS DEL EVENTO */
@@ -124,51 +114,49 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 18px 12px;
+            padding: 18px 10px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-around;
             text-align: center;
-            box-shadow: 0 8px 25px var(--card-shadow);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         .detail-item h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
-            color: var(--magenta-wine);
+            color: var(--accent-pink-light);
             margin-bottom: 4px;
             letter-spacing: 1px;
-            font-weight: 800;
         }
 
         .detail-item p {
-            font-weight: 800;
+            font-weight: 700;
             font-size: 0.95rem;
-            color: var(--text-dark);
+            color: var(--white);
         }
 
         /* SECCIÓN DEL PROGRAMA */
         .section-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--white);
             text-align: center;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
             position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 70px;
+            width: 80px;
             height: 3px;
-            background: var(--white);
+            background: var(--primary-neon-pink);
             margin: 8px auto 0 auto;
             border-radius: 2px;
-            opacity: 0.8;
+            box-shadow: 0 0 8px var(--primary-neon-pink);
         }
 
         .program-list {
@@ -177,28 +165,27 @@
             gap: 14px;
         }
 
-        /* TARJETAS DEL PROGRAMA (Blancas de cristal) */
+        /* TARJETAS DEL PROGRAMA */
         .program-card {
             background: var(--card-glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            border-left: 5px solid var(--magenta-wine);
-            border-radius: 16px;
-            padding: 18px 20px;
+            border-radius: 18px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            gap: 18px;
-            box-shadow: 0 6px 20px var(--card-shadow);
+            gap: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             position: relative;
             
-            /* Animación de entrada */
+            /* Animación de entrada suave */
             opacity: 0;
             transform: translateY(15px);
             animation: fadeInUp 0.4s forwards ease-out;
         }
 
-        /* Retrasos escalonados */
+        /* Tiempos de animación escalonados */
         .program-list .program-card:nth-child(1) { animation-delay: 0.05s; }
         .program-list .program-card:nth-child(2) { animation-delay: 0.10s; }
         .program-list .program-card:nth-child(3) { animation-delay: 0.15s; }
@@ -220,8 +207,9 @@
         .program-number {
             font-size: 1.5rem;
             font-weight: 900;
-            color: var(--magenta-wine);
+            color: var(--primary-neon-pink);
             min-width: 35px;
+            text-shadow: 0 0 10px rgba(255, 16, 240, 0.6);
         }
 
         .program-info {
@@ -229,9 +217,9 @@
         }
 
         .program-info h3 {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 800;
-            color: var(--teal-main);
+            color: var(--accent-pink-light);
             margin-bottom: 2px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -239,17 +227,16 @@
 
         .program-info .act-name {
             font-size: 1.05rem;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 4px;
-            color: var(--text-dark);
+            color: var(--white);
             line-height: 1.3;
         }
 
         .program-info .choreographer {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.88);
             font-style: italic;
-            font-weight: 600;
         }
 
         /* AGRADECIMIENTOS */
@@ -260,38 +247,32 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 25px 22px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 8px 25px var(--card-shadow);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         footer h2 {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--magenta-wine);
+            color: var(--accent-pink-light);
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         footer p {
-            font-size: 0.9rem;
-            line-height: 1.65;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        footer p strong {
-            color: var(--wine-dark);
-            font-weight: 800;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--white);
+            opacity: 0.95;
         }
 
         .footer-credits {
             margin-top: 20px;
-            font-size: 0.78rem;
-            color: var(--teal-main);
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
+            color: var(--accent-pink-light);
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -316,7 +297,7 @@
             </div>
             <div class="detail-item">
                 <h4>Lugar</h4>
-                <p>Casa de Cultura<br><small style="color: var(--teal-main); font-weight: 700;">Salón 22</small></p>
+                <p>Casa de Cultura<br><small>Salón 22</small></p>
             </div>
         </div>
 
@@ -429,11 +410,16 @@
 
         <footer>
             <h2>Agradecimientos</h2>
-            <p>Agradecemos a la <strong>Casa de Cultura</strong>, al <strong>Ayuntamiento de Nanchital</strong>, y a los grupos invitados <strong>New Boys Revolution</strong> y la <strong>Escuela de Danza Xaman</strong> por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
+            <p>Agradecemos a la Casa de Cultura, al Ayuntamiento de Nanchital, y a los grupos invitados New Boys Revolution y la Escuela de Danza Shaman por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
             <div class="footer-credits">
                 © 2026 Mycelium Dance Program
             </div>
         </footer>
+
+    </div>
+
+</body>
+</html>
 
     </div>
 
