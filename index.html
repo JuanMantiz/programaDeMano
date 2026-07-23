@@ -11,14 +11,17 @@
     
     <style>
         :root {
-            --primary-neon-pink: #FF10F0;
-            --bright-pink: #FF55F3;
-            --light-cyan: #80E8F2;
+            /* Paleta inspirada exactamente en el cartel */
+            --teal-main: #249EA0;
+            --magenta-wine: #8C134E;
+            --wine-dark: #640A36;
+            --text-dark: #1A2B32;
+            --text-muted: #4A5D65;
             --white: #FFFFFF;
-            /* Contenedores oscuros translúcidos para máximo contraste */
-            --card-dark-glass: rgba(12, 28, 38, 0.72);
-            --card-border: rgba(255, 255, 255, 0.18);
-            --neon-border: rgba(255, 16, 240, 0.4);
+            /* Tarjetas blancas de cristal brillante para alta legibilidad */
+            --card-glass: rgba(255, 255, 255, 0.88);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --card-shadow: rgba(14, 52, 62, 0.15);
         }
 
         * {
@@ -27,35 +30,43 @@
             padding: 0;
         }
 
-        /* FONDO DE GRADIENTE ANIMADO Y FLUIDO */
+        /* ----------------------------------------------------------- */
+        /* FONDO DINÁMICO ELEGANTE: TURQUESA, AZUL Y LUZ BLANCA */
+        /* ----------------------------------------------------------- */
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--white);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 25px 15px;
+            padding: 30px 15px;
             overflow-x: hidden;
             position: relative;
 
-            background: linear-gradient(135deg, #188B98 0%, #0F5760 25%, #E600D8 50%, #188B98 75%, #0D4951 100%);
-            background-size: 400% 400%;
-            animation: fluidGradient 12s ease infinite;
+            /* Gradiente fluido de tonos turquesa con luz blanca suave */
+            background: linear-gradient(135deg, #1D8A95 0%, #29B3C1 25%, #EBF8F9 50%, #1A7983 75%, #249EA0 100%);
+            background-size: 350% 350%;
+            animation: elegantFluid 16s ease infinite;
         }
 
-        @keyframes fluidGradient {
+        @keyframes elegantFluid {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Capa de legibilidad extra */
+        /* Destello suave que imita iluminación escénica */
         body::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.15);
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
             z-index: 0;
+            pointer-events: none;
         }
 
         .container {
@@ -77,87 +88,87 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 700;
-            color: var(--light-cyan);
-            margin-bottom: 6px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: var(--white);
+            margin-bottom: 8px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         h1.main-title {
-            font-size: 2.3rem;
+            font-size: 2.4rem;
             font-weight: 900;
-            color: var(--white);
-            text-shadow: 0 0 18px rgba(255, 16, 240, 0.9), 0 3px 6px rgba(0,0,0,0.6);
-            line-height: 1.15;
-            margin-bottom: 15px;
+            color: var(--magenta-wine);
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
+            line-height: 1.1;
+            margin-bottom: 16px;
             text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
 
         .event-badge {
-            background: linear-gradient(135deg, #FF10F0, #B800AC);
+            background-color: var(--magenta-wine);
             color: var(--white);
             display: inline-block;
-            padding: 8px 22px;
+            padding: 8px 24px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 0.85rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            box-shadow: 0 4px 20px rgba(255, 16, 240, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(140, 19, 78, 0.25);
         }
 
         /* DATOS DEL EVENTO */
         .event-details {
-            background: var(--card-dark-glass);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--neon-border);
+            background: var(--card-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 18px 10px;
+            padding: 18px 12px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-around;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 25px var(--card-shadow);
         }
 
         .detail-item h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
-            color: var(--bright-pink);
+            color: var(--magenta-wine);
             margin-bottom: 4px;
             letter-spacing: 1px;
             font-weight: 800;
         }
 
         .detail-item p {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 0.95rem;
-            color: var(--white);
+            color: var(--text-dark);
         }
 
         /* SECCIÓN DEL PROGRAMA */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--white);
             text-align: center;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
             position: relative;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
+            width: 70px;
             height: 3px;
-            background: var(--primary-neon-pink);
+            background: var(--white);
             margin: 8px auto 0 auto;
             border-radius: 2px;
-            box-shadow: 0 0 10px var(--primary-neon-pink);
+            opacity: 0.8;
         }
 
         .program-list {
@@ -166,19 +177,19 @@
             gap: 14px;
         }
 
-        /* TARJETAS DEL PROGRAMA (Oscuras con alta legibilidad) */
+        /* TARJETAS DEL PROGRAMA (Blancas de cristal) */
         .program-card {
-            background: var(--card-dark-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--card-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            border-left: 4px solid var(--primary-neon-pink);
+            border-left: 5px solid var(--magenta-wine);
             border-radius: 16px;
-            padding: 16px 20px;
+            padding: 18px 20px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            gap: 18px;
+            box-shadow: 0 6px 20px var(--card-shadow);
             position: relative;
             
             /* Animación de entrada */
@@ -207,11 +218,10 @@
         }
 
         .program-number {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 900;
-            color: var(--bright-pink);
-            min-width: 38px;
-            text-shadow: 0 0 10px rgba(255, 16, 240, 0.7);
+            color: var(--magenta-wine);
+            min-width: 35px;
         }
 
         .program-info {
@@ -219,10 +229,10 @@
         }
 
         .program-info h3 {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 800;
-            color: var(--light-cyan);
-            margin-bottom: 3px;
+            color: var(--teal-main);
+            margin-bottom: 2px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -231,13 +241,13 @@
             font-size: 1.05rem;
             font-weight: 800;
             margin-bottom: 4px;
-            color: var(--white);
-            line-height: 1.35;
+            color: var(--text-dark);
+            line-height: 1.3;
         }
 
         .program-info .choreographer {
             font-size: 0.85rem;
-            color: var(--bright-pink);
+            color: var(--text-muted);
             font-style: italic;
             font-weight: 600;
         }
@@ -245,43 +255,42 @@
         /* AGRADECIMIENTOS */
         footer {
             margin-top: 40px;
-            background: var(--card-dark-glass);
+            background: var(--card-glass);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--neon-border);
+            border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 25px 20px;
+            padding: 25px 22px;
             text-align: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 25px var(--card-shadow);
         }
 
         footer h2 {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--bright-pink);
+            color: var(--magenta-wine);
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(255, 16, 240, 0.5);
         }
 
         footer p {
             font-size: 0.9rem;
             line-height: 1.65;
-            color: var(--white);
+            color: var(--text-dark);
             font-weight: 500;
         }
 
         footer p strong {
-            color: var(--light-cyan);
-            font-weight: 700;
+            color: var(--wine-dark);
+            font-weight: 800;
         }
 
         .footer-credits {
             margin-top: 20px;
-            font-size: 0.75rem;
-            color: var(--light-cyan);
-            opacity: 0.8;
+            font-size: 0.78rem;
+            color: var(--teal-main);
+            font-weight: 700;
             letter-spacing: 1px;
         }
     </style>
@@ -307,7 +316,7 @@
             </div>
             <div class="detail-item">
                 <h4>Lugar</h4>
-                <p>Casa de Cultura<br><small style="color: var(--light-cyan);">Salón 22</small></p>
+                <p>Casa de Cultura<br><small style="color: var(--teal-main); font-weight: 700;">Salón 22</small></p>
             </div>
         </div>
 
@@ -420,7 +429,7 @@
 
         <footer>
             <h2>Agradecimientos</h2>
-            <p>Agradecemos a la <strong>Casa de Cultura</strong>, al <strong>Ayuntamiento de Nanchital</strong>, y a nuestros grupos invitados <strong>New Boys Revolution</strong> y la <strong>Escuela de Danza Xaman</strong> por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
+            <p>Agradecemos a la <strong>Casa de Cultura</strong>, al <strong>Ayuntamiento de Nanchital</strong>, y a los grupos invitados <strong>New Boys Revolution</strong> y la <strong>Escuela de Danza Xaman</strong> por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
             <div class="footer-credits">
                 © 2026 Mycelium Dance Program
             </div>
