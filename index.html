@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Mano | Exhibición de Danza - Mycelium Dance Program</title>
+    <!-- Fuente moderna desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-turquoise: #2AA8B7;
+            --primary-magenta: #8C134E;
+            --accent-pink: #F7D6E0;
+            --white: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --card-border: rgba(255, 255, 255, 0.3);
+            --text-dark: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-turquoise);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px 15px;
+            background-image: radial-gradient(circle at 80% 20%, rgba(247, 214, 224, 0.25) 0%, transparent 50%),
+                              radial-gradient(circle at 20% 80%, rgba(140, 19, 78, 0.2) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Encabezado Principal */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 10px;
+        }
+
+        .subtitle-top {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--accent-pink);
+            margin-bottom: 5px;
+        }
+
+        h1.main-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-magenta);
+            text-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .event-badge {
+            background-color: var(--white);
+            color: var(--primary-magenta);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Información del Evento */
+        .event-details {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent-pink);
+            margin-bottom: 4px;
+        }
+
+        .detail-item p {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* Lista de Programa */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-pink);
+            padding-bottom: 8px;
+        }
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--primary-magenta);
+            transition: transform 0.2s ease;
+        }
+
+        .program-number {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary-magenta);
+            min-width: 30px;
+        }
+
+        .program-info h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--primary-magenta);
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .program-info .act-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #111;
+        }
+
+        .program-info .choreographer {
+            font-size: 0.85rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Sección de Agradecimientos */
+        footer {
+            margin-top: 40px;
+            background: rgba(140, 19, 78, 0.9);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        footer h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-pink);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        footer p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #FFFFFF;
+        }
+
+        .footer-credits {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: var(--accent-pink);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <p class="subtitle-top">Mycelium Dance Program</p>
+            <h1 class="main-title">Exhibición<br>de Danza</h1>
+            <div class="event-badge">Programa de Mano</div>
+        </header>
+
+        <div class="event-details">
+            <div class="detail-item">
+                <h4>Fecha</h4>
+                <p>23 de Julio, 2026</p>
+            </div>
+            <div class="detail-item">
+                <h4>Hora</h4>
+                <p>5:00 PM</p>
+            </div>
+            <div class="detail-item">
+                <h4>Lugar</h4>
+                <p>Casa de Cultura<br><small>Salón 22</small></p>
+            </div>
+        </div>
+
+        <main>
+            <h2 class="section-title">Orden de Presentación</h2>
+
+            <div class="program-list">
+
+                <!-- 1 -->
+                <div class="program-card">
+                    <div class="program-number">01</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Baby – Muestra de Ballet</div>
+                        <div class="choreographer">Coreografía: Mtro. Juan Carlos García</div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="program-card">
+                    <div class="program-number">02</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Infantil – Muestra de Ballet</div>
+                        <div class="choreographer">Coreografía: Mtro. Juan Carlos García</div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="program-card">
+                    <div class="program-number">03</div>
+                    <div class="program-info">
+                        <h3>Ballet Folklórico "XAMAN" Estrellas de la Noche</h3>
+                        <div class="act-name">Afro Sampro</div>
+                        <div class="choreographer">Coreografía: Mtro. Benjamín Gerónimo Morales</div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="program-card">
+                    <div class="program-number">04</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Baby – Muestra de Danza Creativa</div>
+                        <div class="choreographer">Coreografía: Mtra. Laura Molina</div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="program-card">
+                    <div class="program-number">05</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Infantil – Muestra de Danza Contemporánea</div>
+                        <div class="choreographer">Coreografía: Mtra. Laura Molina</div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="program-card">
+                    <div class="program-number">06</div>
+                    <div class="program-info">
+                        <h3>Ballet Folklórico "XAMAN" Estrellas de la Noche</h3>
+                        <div class="act-name">Afro Morena</div>
+                        <div class="choreographer">Coreografía: Mtro. Benjamín Gerónimo Morales</div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="program-card">
+                    <div class="program-number">07</div>
+                    <div class="program-info">
+                        <h3>Newboys Revolution</h3>
+                        <div class="act-name">Muestra de Danza Urbana</div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="program-card">
+                    <div class="program-number">08</div>
+                    <div class="program-info">
+                        <h3>Ballet Folklórico "XAMAN" Estrellas de la Noche</h3>
+                        <div class="act-name">Manduco</div>
+                        <div class="choreographer">Coreografía: Mtro. Benjamín Gerónimo Morales</div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="program-card">
+                    <div class="program-number">09</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Juvenil – Muestra de Danza Urbana</div>
+                        <div class="choreographer">Coreografía: Mtro. Stefan Castellanos</div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="program-card">
+                    <div class="program-number">10</div>
+                    <div class="program-info">
+                        <h3>Mycelium Dance Program</h3>
+                        <div class="act-name">Categoría Infantil – Solo de Danza Urbana</div>
+                        <div class="choreographer">Coreografía: Mtro. Stefan Castellanos</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <h2>Agradecimientos Especiales</h2>
+            <p>Agradecemos sinceramente a la <strong>Casa de Cultura</strong> y al <strong>Ayuntamiento de Nanchital</strong> por su valioso espacio y apoyo, así como a nuestros grupos invitados: <strong>New Boys Revolution</strong> y la <strong>Escuela de Danza Xaman</strong> por unirse a esta propuesta y enriquecer esta gran exhibición de danza.</p>
+            <div class="footer-credits">
+                © 2026 Mycelium Dance Program
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
