@@ -11,7 +11,6 @@
     
     <style>
         :root {
-            --bg-turquoise: #1FA5B2;
             --primary-neon-pink: #FF10F0;
             --accent-pink-light: #FFD1F8;
             --white: #FFFFFF;
@@ -25,10 +24,11 @@
             padding: 0;
         }
 
-        /* FONDO DINÁMICO CON LUCES */
+        /* ----------------------------------------------------------- */
+        /* FONDO DE GRADIENTE ANIMADO Y FLUIDO (CORREGIDO) */
+        /* ----------------------------------------------------------- */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-turquoise);
             color: var(--white);
             min-height: 100vh;
             display: flex;
@@ -36,34 +36,35 @@
             padding: 25px 15px;
             overflow-x: hidden;
             position: relative;
+
+            /* Definición del gradiente animado */
+            background: linear-gradient(135deg, #1FA5B2 0%, #157A83 25%, #FF10F010 50%, #1FA5B2 75%, #157A83 100%);
+            background-size: 400% 400%; /* Tamaño grande para el movimiento */
+            animation: fluidGradient 15s ease infinite; /* Animación continua */
         }
 
-        body::before, body::after {
+        /* Definición de la animación del gradiente */
+        @keyframes fluidGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* ----------------------------------------------------------- */
+
+        /* Capa superpuesta para asegurar legibilidad del texto */
+        body::before {
             content: '';
             position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            background: rgba(255, 16, 240, 0.3);
-            filter: blur(90px);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.1); /* Ligero oscurecimiento opcional */
             z-index: 0;
-            animation: moveLights 7s infinite alternate ease-in-out;
-        }
-
-        body::after {
-            background: rgba(255, 255, 255, 0.25);
-            animation-delay: -3.5s;
-        }
-
-        @keyframes moveLights {
-            0% { transform: translate(-60px, -40px); }
-            100% { transform: translate(60px, 50px); }
         }
 
         .container {
             max-width: 520px;
             width: 100%;
-            z-index: 1;
+            z-index: 1; /* Asegura que el contenido esté sobre el fondo animado */
+            position: relative;
         }
 
         /* ENCABEZADO */
@@ -407,11 +408,16 @@
 
         <footer>
             <h2>Agradecimientos</h2>
-            <p>Agradecemos a la Casa de Cultura, al Ayuntamiento de Nanchital, y a los grupos invitados New Boys Revolution y lal Ballet Folklórico Xaman por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
+            <p>Agradecemos a la Casa de Cultura, al Ayuntamiento de Nanchital, y a los grupos invitados New Boys Revolution y la Escuela de Danza Shaman por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
             <div class="footer-credits">
                 © 2026 Mycelium Dance Program
             </div>
         </footer>
+
+    </div>
+
+</body>
+</html>
 
     </div>
 
