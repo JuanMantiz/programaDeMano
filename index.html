@@ -7,15 +7,18 @@
     <!-- Fuentes desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-neon-pink: #FF10F0;
-            --accent-pink-light: #FFD1F8;
+            --bright-pink: #FF55F3;
+            --light-cyan: #80E8F2;
             --white: #FFFFFF;
-            --card-glass: rgba(255, 255, 255, 0.12);
-            --card-border: rgba(255, 255, 255, 0.25);
+            /* Contenedores oscuros translúcidos para máximo contraste */
+            --card-dark-glass: rgba(12, 28, 38, 0.72);
+            --card-border: rgba(255, 255, 255, 0.18);
+            --neon-border: rgba(255, 16, 240, 0.4);
         }
 
         * {
@@ -24,9 +27,7 @@
             padding: 0;
         }
 
-        /* ----------------------------------------------------------- */
-        /* FONDO DE GRADIENTE ANIMADO Y FLUIDO (CORREGIDO) */
-        /* ----------------------------------------------------------- */
+        /* FONDO DE GRADIENTE ANIMADO Y FLUIDO */
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--white);
@@ -37,33 +38,30 @@
             overflow-x: hidden;
             position: relative;
 
-            /* Definición del gradiente animado */
-            background: linear-gradient(135deg, #1FA5B2 0%, #157A83 25%, #FF10F010 50%, #1FA5B2 75%, #157A83 100%);
-            background-size: 400% 400%; /* Tamaño grande para el movimiento */
-            animation: fluidGradient 15s ease infinite; /* Animación continua */
+            background: linear-gradient(135deg, #188B98 0%, #0F5760 25%, #E600D8 50%, #188B98 75%, #0D4951 100%);
+            background-size: 400% 400%;
+            animation: fluidGradient 12s ease infinite;
         }
 
-        /* Definición de la animación del gradiente */
         @keyframes fluidGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        /* ----------------------------------------------------------- */
 
-        /* Capa superpuesta para asegurar legibilidad del texto */
+        /* Capa de legibilidad extra */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.1); /* Ligero oscurecimiento opcional */
+            background: rgba(0, 0, 0, 0.15);
             z-index: 0;
         }
 
         .container {
             max-width: 520px;
             width: 100%;
-            z-index: 1; /* Asegura que el contenido esté sobre el fondo animado */
+            z-index: 1;
             position: relative;
         }
 
@@ -78,23 +76,24 @@
             font-size: 0.85rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 600;
-            color: var(--accent-pink-light);
+            font-weight: 700;
+            color: var(--light-cyan);
             margin-bottom: 6px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         h1.main-title {
             font-size: 2.3rem;
             font-weight: 900;
             color: var(--white);
-            text-shadow: 0 0 15px rgba(255, 16, 240, 0.7);
+            text-shadow: 0 0 18px rgba(255, 16, 240, 0.9), 0 3px 6px rgba(0,0,0,0.6);
             line-height: 1.15;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .event-badge {
-            background: linear-gradient(135deg, #FF10F0, #D100C4);
+            background: linear-gradient(135deg, #FF10F0, #B800AC);
             color: var(--white);
             display: inline-block;
             padding: 8px 22px;
@@ -103,30 +102,32 @@
             font-size: 0.85rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 16, 240, 0.5);
+            box-shadow: 0 4px 20px rgba(255, 16, 240, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         /* DATOS DEL EVENTO */
         .event-details {
-            background: var(--card-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
+            background: var(--card-dark-glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--neon-border);
             border-radius: 20px;
             padding: 18px 10px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-around;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
         }
 
         .detail-item h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
-            color: var(--accent-pink-light);
+            color: var(--bright-pink);
             margin-bottom: 4px;
             letter-spacing: 1px;
+            font-weight: 800;
         }
 
         .detail-item p {
@@ -145,6 +146,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         .section-title::after {
@@ -155,7 +157,7 @@
             background: var(--primary-neon-pink);
             margin: 8px auto 0 auto;
             border-radius: 2px;
-            box-shadow: 0 0 8px var(--primary-neon-pink);
+            box-shadow: 0 0 10px var(--primary-neon-pink);
         }
 
         .program-list {
@@ -164,27 +166,28 @@
             gap: 14px;
         }
 
-        /* TARJETAS DEL PROGRAMA */
+        /* TARJETAS DEL PROGRAMA (Oscuras con alta legibilidad) */
         .program-card {
-            background: var(--card-glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--card-dark-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            border-radius: 18px;
+            border-left: 4px solid var(--primary-neon-pink);
+            border-radius: 16px;
             padding: 16px 20px;
             display: flex;
             align-items: center;
             gap: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             position: relative;
             
-            /* Animación de entrada suave */
+            /* Animación de entrada */
             opacity: 0;
             transform: translateY(15px);
             animation: fadeInUp 0.4s forwards ease-out;
         }
 
-        /* Tiempos de animación escalonados */
+        /* Retrasos escalonados */
         .program-list .program-card:nth-child(1) { animation-delay: 0.05s; }
         .program-list .program-card:nth-child(2) { animation-delay: 0.10s; }
         .program-list .program-card:nth-child(3) { animation-delay: 0.15s; }
@@ -204,11 +207,11 @@
         }
 
         .program-number {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            color: var(--primary-neon-pink);
-            min-width: 35px;
-            text-shadow: 0 0 10px rgba(255, 16, 240, 0.6);
+            color: var(--bright-pink);
+            min-width: 38px;
+            text-shadow: 0 0 10px rgba(255, 16, 240, 0.7);
         }
 
         .program-info {
@@ -218,59 +221,68 @@
         .program-info h3 {
             font-size: 0.85rem;
             font-weight: 800;
-            color: var(--accent-pink-light);
-            margin-bottom: 2px;
+            color: var(--light-cyan);
+            margin-bottom: 3px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .program-info .act-name {
             font-size: 1.05rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 4px;
             color: var(--white);
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .program-info .choreographer {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--bright-pink);
             font-style: italic;
+            font-weight: 600;
         }
 
         /* AGRADECIMIENTOS */
         footer {
             margin-top: 40px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
+            background: var(--card-dark-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--neon-border);
             border-radius: 20px;
             padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         footer h2 {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--accent-pink-light);
+            color: var(--bright-pink);
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 16, 240, 0.5);
         }
 
         footer p {
-            font-size: 0.88rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.65;
             color: var(--white);
-            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        footer p strong {
+            color: var(--light-cyan);
+            font-weight: 700;
         }
 
         .footer-credits {
             margin-top: 20px;
             font-size: 0.75rem;
-            color: var(--accent-pink-light);
-            opacity: 0.7;
+            color: var(--light-cyan);
+            opacity: 0.8;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -295,7 +307,7 @@
             </div>
             <div class="detail-item">
                 <h4>Lugar</h4>
-                <p>Casa de Cultura<br><small>Salón 22</small></p>
+                <p>Casa de Cultura<br><small style="color: var(--light-cyan);">Salón 22</small></p>
             </div>
         </div>
 
@@ -408,16 +420,11 @@
 
         <footer>
             <h2>Agradecimientos</h2>
-            <p>Agradecemos a la Casa de Cultura, al Ayuntamiento de Nanchital, y a los grupos invitados New Boys Revolution y la Escuela de Danza Shaman por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
+            <p>Agradecemos a la <strong>Casa de Cultura</strong>, al <strong>Ayuntamiento de Nanchital</strong>, y a nuestros grupos invitados <strong>New Boys Revolution</strong> y la <strong>Escuela de Danza Xaman</strong> por unirse a esta propuesta y hacer posible esta exhibición de danza.</p>
             <div class="footer-credits">
                 © 2026 Mycelium Dance Program
             </div>
         </footer>
-
-    </div>
-
-</body>
-</html>
 
     </div>
 
